@@ -2,7 +2,7 @@
  * Day Remaining Time App
  */
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {
   StatusBar,
   useColorScheme,
@@ -10,16 +10,18 @@ import {
   TouchableOpacity,
   Text,
   Platform,
-  LayoutAnimation,
-  UIManager,
   StyleSheet,
+  Animated,
+  UIManager,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import LinearGradient from 'react-native-linear-gradient';
 import DailyView from './DailyView';
 import WeeklyView from './WeeklyView';
 import MonthlyView from './MonthlyView';
 import AddEventModal from './AddEventModal';
 import BottomSlider from './BottomSlider';
+import QuotesView from './QuotesView';
 
 if (Platform.OS === 'android') {
   if (UIManager.setLayoutAnimationEnabledExperimental) {
@@ -34,16 +36,25 @@ interface Event {
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
-  const [activeView, setActiveView] = useState('Daily');
-  const [remainingTime, setRemainingTime] = useState('');
-  const [remainingWeek, setRemainingWeek] = useState('');
-  const [remainingMonth, setRemainingMonth] = useState('');
-  const [events, setEvents] = useState<Event[]>([]);
-  const [modalVisible, setModalVisible] = useState(false);
+  const [activeView, setActiveView] = React.useState('Daily');
+  const [remainingTime, setRemainingTime] = React.useState('');
+  const [remainingWeek, setRemainingWeek] = React.useState('');
+  const [remainingMonth, setRemainingMonth] = React.useState('');
+  const [events, setEvents] = React.useState<Event[]>([]);
+  const [modalVisible, setModalVisible] = React.useState(false);
+  const fadeAnim = React.useRef(new Animated.Value(0)).current;
 
   const textColor = isDarkMode ? '#fff' : '#000';
 
-  useEffect(() => {
+  React.useEffect(() => {
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      duration: 1000,
+      useNativeDriver: true,
+    }).start();
+  }, [activeView]);
+
+  React.useEffect(() => {
     const interval = setInterval(() => {
       // Daily
       const now = new Date();
@@ -83,7 +94,7 @@ function App(): React.JSX.Element {
   };
 
   const handleViewChange = (view: string) => {
-    LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
+    fadeAnim.setValue(0);
     setActiveView(view);
   };
 
@@ -109,13 +120,11 @@ function App(): React.JSX.Element {
     });
   };
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? '#1a1a1a' : '#f2f2f2',
-    flex: 1,
-  };
-
   const styles = StyleSheet.create({
     container: {
+      flex: 1,
+    },
+    contentContainer: {
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
@@ -138,26 +147,33 @@ function App(): React.JSX.Element {
   });
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <View style={styles.container}>
-        {activeView === 'Daily' && <DailyView remainingTime={remainingTime} textColor={textColor} active={activeView === 'Daily'} />}
-        {activeView === 'Weekly' && <WeeklyView remainingWeek={remainingWeek} events={getWeeklyEvents()} textColor={textColor} />}
-        {activeView === 'Monthly' && <MonthlyView remainingMonth={remainingMonth} events={getMonthlyEvents()} textColor={textColor} />}
-      </View>
-      <TouchableOpacity style={styles.addEventButton} onPress={() => setModalVisible(true)}>
-        <Text style={styles.addEventButtonText}>+</Text>
-      </TouchableOpacity>
-      <AddEventModal
-        modalVisible={modalVisible}
-        setModalVisible={setModalVisible}
-        handleAddEvent={handleAddEvent}
-      />
-      <BottomSlider activeView={activeView} handleViewChange={handleViewChange} textColor={textColor} />
-    </SafeAreaView>
+    <LinearGradient
+      colors={['#0a192f', '#1c3a63', '#3a66a7']}
+      style={styles.container}
+    >
+      <SafeAreaView style={styles.container}>
+        <StatusBar
+          barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+          backgroundColor="transparent"
+          translucent={true}
+        />
+        <Animated.View style={[styles.contentContainer, { opacity: fadeAnim }]}>
+          {activeView === 'Daily' && <DailyView remainingTime={remainingTime} textColor={textColor} active={activeView === 'Daily'} />}
+          {activeView === 'Weekly' && <WeeklyView remainingWeek={remainingWeek} events={getWeeklyEvents()} textColor={textColor} />}
+          {activeView === 'Monthly' && <MonthlyView remainingMonth={remainingMonth} events={getMonthlyEvents()} textColor={textColor} />}
+          {activeView === 'Quotes' && <QuotesView textColor={textColor} />}
+        </Animated.View>
+        <TouchableOpacity style={styles.addEventButton} onPress={() => setModalVisible(true)}>
+          <Text style={styles.addEventButtonText}>+</Text>
+        </TouchableOpacity>
+        <AddEventModal
+          modalVisible={modalVisible}
+          setModalVisible={setModalVisible}
+          handleAddEvent={handleAddEvent}
+        />
+        <BottomSlider activeView={activeView} handleViewChange={handleViewChange} textColor={textColor} />
+      </SafeAreaView>
+    </LinearGradient>
   );
 }
 

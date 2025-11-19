@@ -3,7 +3,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Platform } from 'react-native';
 
 interface Event {
   title: string;
@@ -53,7 +53,7 @@ const EventCountdown: React.FC<Props> = ({ events, textColor }) => {
       fontWeight: 'bold',
       marginBottom: 20,
       textAlign: 'center',
-      fontFamily: 'Helvetica Neue',
+      fontFamily: Platform.OS === 'ios' ? 'Helvetica Neue' : 'sans-serif',
     },
     eventContainer: {
       backgroundColor: 'rgba(255, 255, 255, 0.2)',
@@ -65,12 +65,12 @@ const EventCountdown: React.FC<Props> = ({ events, textColor }) => {
       color: textColor,
       fontSize: 18,
       fontWeight: 'bold',
-      fontFamily: 'Helvetica Neue',
+      fontFamily: Platform.OS === 'ios' ? 'Helvetica Neue' : 'sans-serif',
     },
     eventDate: {
       color: textColor,
       fontSize: 16,
-      fontFamily: 'Helvetica Neue',
+      fontFamily: Platform.OS === 'ios' ? 'Helvetica Neue' : 'sans-serif',
     },
   });
 

@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     color: '#000',
     fontSize: 24,
     fontWeight: 'bold',
-    fontFamily: 'Helvetica Neue',
+    fontFamily: Platform.OS === 'ios' ? 'Helvetica Neue' : 'sans-serif',
   },
   textInput: {
     height: 40,
@@ -115,11 +115,11 @@ const styles = StyleSheet.create({
     width: '100%',
     marginBottom: 20,
     paddingHorizontal: 10,
-    fontFamily: 'Helvetica Neue',
+    fontFamily: Platform.OS === 'ios' ? 'Helvetica Neue' : 'sans-serif',
   },
   dateText: {
     fontSize: 18,
-    fontFamily: 'Helvetica Neue',
+    fontFamily: Platform.OS === 'ios' ? 'Helvetica Neue' : 'sans-serif',
     marginBottom: 20,
   },
 });

@@ -3,7 +3,8 @@
  */
 
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Platform } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 interface Props {
   activeView: string;
@@ -25,48 +26,111 @@ const BottomSlider: React.FC<Props> = ({
       backgroundColor: 'rgba(255, 255, 255, 0.2)', // Glass effect
     },
     sliderOption: {
-      color: textColor,
-      fontSize: 18,
-      fontFamily: 'Helvetica Neue',
+      alignItems: 'center',
     },
-    activeSliderOption: {
+    sliderIcon: {
+      color: textColor,
+    },
+    activeSliderIcon: {
       color: '#007aff', // Blue accent
-      fontSize: 18,
+    },
+    sliderText: {
+      color: textColor,
+      fontSize: 12,
+      fontFamily: Platform.OS === 'ios' ? 'Helvetica Neue' : 'sans-serif',
+    },
+    activeSliderText: {
+      color: '#007aff', // Blue accent
+      fontSize: 12,
       fontWeight: 'bold',
-      fontFamily: 'Helvetica Neue',
+      fontFamily: Platform.OS === 'ios' ? 'Helvetica Neue' : 'sans-serif',
     },
   });
 
   return (
     <View style={styles.sliderContainer}>
-      <TouchableOpacity onPress={() => handleViewChange('Daily')}>
+      <TouchableOpacity
+        style={styles.sliderOption}
+        onPress={() => handleViewChange('Daily')}>
+        <Icon
+          name="calendar-outline"
+          size={30}
+          style={
+            activeView === 'Daily'
+              ? styles.activeSliderIcon
+              : styles.sliderIcon
+          }
+        />
         <Text
           style={
             activeView === 'Daily'
-              ? styles.activeSliderOption
-              : styles.sliderOption
+              ? styles.activeSliderText
+              : styles.sliderText
           }>
           Daily
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => handleViewChange('Weekly')}>
+      <TouchableOpacity
+        style={styles.sliderOption}
+        onPress={() => handleViewChange('Weekly')}>
+        <Icon
+          name="calendar"
+          size={30}
+          style={
+            activeView === 'Weekly'
+              ? styles.activeSliderIcon
+              : styles.sliderIcon
+          }
+        />
         <Text
           style={
             activeView === 'Weekly'
-              ? styles.activeSliderOption
-              : styles.sliderOption
+              ? styles.activeSliderText
+              : styles.sliderText
           }>
           Weekly
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => handleViewChange('Monthly')}>
+      <TouchableOpacity
+        style={styles.sliderOption}
+        onPress={() => handleViewChange('Monthly')}>
+        <Icon
+          name="grid-outline"
+          size={30}
+          style={
+            activeView === 'Monthly'
+              ? styles.activeSliderIcon
+              : styles.sliderIcon
+          }
+        />
         <Text
           style={
             activeView === 'Monthly'
-              ? styles.activeSliderOption
-              : styles.sliderOption
+              ? styles.activeSliderText
+              : styles.sliderText
           }>
           Monthly
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.sliderOption}
+        onPress={() => handleViewChange('Quotes')}>
+        <Icon
+          name="chatbubble-ellipses-outline"
+          size={30}
+          style={
+            activeView === 'Quotes'
+              ? styles.activeSliderIcon
+              : styles.sliderIcon
+          }
+        />
+        <Text
+          style={
+            activeView === 'Quotes'
+              ? styles.activeSliderText
+              : styles.sliderText
+          }>
+          Quotes
         </Text>
       </TouchableOpacity>
     </View>

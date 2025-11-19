@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Platform } from 'react-native';
 import EventCountdown from './EventCountdown';
 
 interface Event {
@@ -23,14 +23,14 @@ const WeeklyView: React.FC<Props> = ({ remainingWeek, events, textColor }) => {
       color: textColor,
       fontSize: 32,
       fontWeight: 'bold',
-      fontFamily: 'Helvetica Neue',
+      fontFamily: Platform.OS === 'ios' ? 'Helvetica Neue' : 'sans-serif',
     },
     time: {
       color: textColor,
       fontSize: 64,
       fontWeight: 'bold',
       marginVertical: 20,
-      fontFamily: 'Helvetica Neue',
+      fontFamily: Platform.OS === 'ios' ? 'Helvetica Neue' : 'sans-serif',
     },
   });
 

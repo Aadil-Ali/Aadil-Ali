@@ -3,7 +3,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Platform } from 'react-native';
 
 interface Props {
   textColor: string;
@@ -37,14 +37,14 @@ const MotivationalQuote: React.FC<Props> = ({ textColor, active }) => {
       fontSize: 20,
       fontStyle: 'italic',
       textAlign: 'center',
-      fontFamily: 'Helvetica Neue',
+      fontFamily: Platform.OS === 'ios' ? 'Helvetica Neue' : 'sans-serif',
     },
     author: {
       color: textColor,
       fontSize: 18,
       textAlign: 'right',
       marginTop: 10,
-      fontFamily: 'Helvetica Neue',
+      fontFamily: Platform.OS === 'ios' ? 'Helvetica Neue' : 'sans-serif',
     },
   });
 
