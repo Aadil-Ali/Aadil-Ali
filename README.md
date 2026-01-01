@@ -1,4 +1,4 @@
-<div align="center">
+
   <h1>Hi, I'm Aadil Ali! 👋</h1>
   <h3>Data Analyst | Transforming Raw Data into Strategic Decisions</h3>
 
