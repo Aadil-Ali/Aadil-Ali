@@ -1,10 +1,3 @@
-# Hi there, I'm Aadil Ali! 👋
-
-### 📊 Data Analyst | Turning Data into Decisions
-I have a strong background in Operations (Physics Wallah) and now I build data-driven solutions using Python and Power BI. Expert in automating workflows and visualizing business insights.
-
----
-
 
   <h1>Hi, I'm Aadil Ali! 👋</h1>
   <h3>Data Analyst | Transforming Raw Data into Strategic Decisions</h3>
