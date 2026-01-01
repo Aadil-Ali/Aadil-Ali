@@ -1,10 +1,10 @@
-
+<div align="center">
   <h1>Hi, I'm Aadil Ali! 👋</h1>
   <h3>Data Analyst | Transforming Raw Data into Strategic Decisions</h3>
 
   <p>
-    <b>Ex-Project Lead @PhysicsWallah</b> turned <b>Data Analyst</b>.<br>
-    I leverage my 3 years of operational experience to build data-driven solutions that reduce manual effort and optimize workflows.<br>
+    <b>Mentor @PhysicsWallah</b> & <b>Data Analyst</b>.<br>
+    Leveraging operational experience to build data-driven solutions that reduce manual effort and optimize workflows.<br>
     Specialized in <b>Python, SQL, and Power BI</b> to uncover hidden insights.
   </p>
 
