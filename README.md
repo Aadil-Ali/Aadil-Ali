@@ -54,21 +54,7 @@ I have a strong background in Operations (Physics Wallah) and now I build data-d
 
 ---
 
-### 📊 GitHub Stats
-<div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=Aadil-Ali&show_icons=true&theme=radical&hide_border=true" height="150" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Aadil-Ali&layout=compact&theme=radical&hide_border=true" height="150" />
-</div>
 
----
-<div align="center">
-  <i>"Data is useless without the right questions."</i><br>
-  <b>📍 Based in Kota, India</b>
-</div>the-badge&logo=powerbi&logoColor=black) ![Excel](https://img.shields.io/badge/Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white) |
-| **Code** | ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) ![SQL](https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=postgresql&logoColor=white) |
-| **Automation** | `Selenium` `BeautifulSoup` `Pandas` |
-
----
 
 ### 🚀 Top Projects
 
@@ -80,5 +66,4 @@ I have a strong background in Operations (Physics Wallah) and now I build data-d
 
 ---
 
-### 📈 GitHub Stats
-![Aadil's GitHub stats](https://github-readme-stats.vercel.app/api?username=Aadil-Ali&show_icons=true&theme=radical)
+
