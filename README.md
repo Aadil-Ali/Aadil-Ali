@@ -5,10 +5,7 @@ I have a strong background in Operations (Physics Wallah) and now I build data-d
 
 ---
 
-### 🛠️ Tech Stack
-| Domain | Skills |
-| :--- | :--- |
-| **Analysis & Viz** | ![Power BI](https://img.shields.io/badge/Power_BI-F2C811?style=for-<div align="center">
+
   <h1>Hi, I'm Aadil Ali! 👋</h1>
   <h3>Data Analyst | Transforming Raw Data into Strategic Decisions</h3>
 
