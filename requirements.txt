@@ -1,0 +1,9 @@
+streamlit
+ultralytics
+pymupdf
+opencv-python-headless
+scikit-image
+pandas
+openpyxl
+Pillow
+roboflow
